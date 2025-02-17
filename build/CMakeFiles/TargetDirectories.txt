@@ -1,5 +1,0 @@
-/Users/xiaodai/Code/XbotGo-Algorithm-DoubleTracker/build/CMakeFiles/xbotgo_sdk.dir
-/Users/xiaodai/Code/XbotGo-Algorithm-DoubleTracker/build/CMakeFiles/main.dir
-/Users/xiaodai/Code/XbotGo-Algorithm-DoubleTracker/build/CMakeFiles/test.dir
-/Users/xiaodai/Code/XbotGo-Algorithm-DoubleTracker/build/CMakeFiles/edit_cache.dir
-/Users/xiaodai/Code/XbotGo-Algorithm-DoubleTracker/build/CMakeFiles/rebuild_cache.dir

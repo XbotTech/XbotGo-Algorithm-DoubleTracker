@@ -81,7 +81,7 @@ int main(int argc, char** argv)
     InitStrategyType type = InitStrategyType::INIT_STRATEGY_TYPE_FOLLOWMEPOSE;
     Xbotgo_Strategy_init(type, "./logs/", enableLog);
     // 注册回调
-XbotgoStrategyCallback* callback = new MyXbotgoStrategyCallback();
+    XbotgoStrategyCallback* callback = new MyXbotgoStrategyCallback();
     Xbotgo_Strategy_registerCallbacks(callback);
     // 设置初始参数
     Xbotgo_Strategy_setVideoBufferSize(1920, 1080);        // 设置拍摄视频分辨率
