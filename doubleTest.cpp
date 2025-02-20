@@ -5,8 +5,9 @@
 #include "Global.h"
 #include "XbotgoStrategy.h"
 #include "XbotgoSingleStrategyCallback.h"
-#include "XbotgoStrategyCallback.h"
+#include "XbotgoSingleStrategy.h"
 #include "DoubleFeatureNet.h"
+#include "XbotgoStrategyCommon.h"
 #include "json.hpp"
 
 using namespace std;
@@ -45,13 +46,13 @@ void printVector(const std::vector<T>& vec, const std::string str = "", std::ost
     std::cout << std::endl;
 }
 
-class MyXbotgoStrategyCallback : public XbotgoSingleStrategyCallback
+class MyXbotgoSingleStrategyCallback : public XbotgoSingleStrategyCallback
 {
 private:
     std::vector<std::vector<double>> featureList = std::vector<std::vector<double>>(2, std::vector<double>(10));
 
 public:
-    MyXbotgoStrategyCallback()
+    MyXbotgoSingleStrategyCallback()
     {
         // 填充数据
         for (int i = 0; i < 2; ++i) {
@@ -63,7 +64,7 @@ public:
         }
         // std::cout << std::endl;
     };
-    virtual ~MyXbotgoStrategyCallback() {};
+    virtual ~MyXbotgoSingleStrategyCallback() {};
 
     virtual std::vector<std::vector<double>> onGetAllFeatures() override
     {
@@ -138,7 +139,7 @@ public:
 
 int main()
 {
-    XbotgoSingleStrategyCallback* myCallback = new MyXbotgoStrategyCallback();
+    XbotgoSingleStrategyCallback* myCallback = new MyXbotgoSingleStrategyCallback();
     g_xbotgoSingleStrategyCallbacks = myCallback;
     DoubleFeatureNet* myDoubleFeatureNet = new DoubleFeatureNet();
     cout << "----------debug myCallback----------" << endl;

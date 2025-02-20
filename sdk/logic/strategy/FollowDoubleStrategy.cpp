@@ -20,14 +20,14 @@ void FollowDoubleSingleStrategy::myTargetInit(const std::vector<std::shared_ptr<
 
     std::cout << "FollowDoubleSingleStrategy::targetIndex[0] : " << targetsIndex[0] << std::endl;
     std::cout << "FollowDoubleSingleStrategy::targetIndex[1] : " << targetsIndex[1] << std::endl;
-    _sot = std::make_unique<SOT>();
+    _doubleSOT = std::make_unique<DoubleSOT>();
     _doubleFeatureNet = std::make_unique<DoubleFeatureNet>();
     _singleZoom = std::make_unique<SingleZoom>(deviceVideoBufferWidth, deviceVideoBufferHeight, minZoom, maxZoom, 0.4, 0.6, 0.5);
 
     std::vector<YOLODetectionResult> virtualResults;
     convertToVirtualResults(detectResults, virtualResults);
 
-    _sot->targetInit(virtualResults, targetsIndex);
+    _doubleSOT->targetInit(virtualResults, targetsIndex);
     _doubleFeatureNet->targetInit(targetsIndex, 2.7);
 
     _isSOTInit = true;
@@ -132,11 +132,11 @@ int FollowDoubleSingleStrategy::doFullFeatureNetFound(const std::vector<std::sha
     if (featureNetIndex != -1) {
         std::vector<YOLODetectionResult> virtualResults;
         convertToVirtualResults(detectResults, virtualResults);
-        // _sot->restart(virtualResults, featureNetIndex);
+        // TODO 需要重启 SOT 需要将当前两个 Index都传入进去
+        // _doubleSOT->restart(virtualResults, featureNetIndex);
         _SOTFailureCount = 0;
         _isSkipSOT = false;
     }
-
     return featureNetIndex;
 }
 

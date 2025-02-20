@@ -4,6 +4,7 @@
 #include "SingleStrategy.h"
 #include "SingleZoom.h"
 #include "DoubleFeatureNet.h"
+#include "DoubleSOT.h"
 
 namespace XbotgoSDK
 {
@@ -81,6 +82,10 @@ private:
     std::vector<RectBox> extractYOLODetectionResults(const std::vector<YOLODetectionResult>& results);
     /// @brief 特征提取及处理
     std::unique_ptr<DoubleFeatureNet> _doubleFeatureNet;
+    std::unique_ptr<DoubleSOT> _doubleSOT;
+
+    /// @brief 追踪目标在YOLO结果中的坐标
+    std::vector<int> targetsIndex;
 };
 } // namespace XbotgoSDK
 
